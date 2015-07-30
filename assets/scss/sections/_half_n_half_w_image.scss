@@ -1,0 +1,48 @@
+section.half-n-half-w-image {
+  height: 20em;
+
+  .copy-grid {
+    // height: 14em;
+  }
+  .image-holder {
+    background-size: cover;
+    background-position: center;
+    // height: 14em;
+  }
+  @include medium {
+    height: 20em;
+    position: relative;
+
+    .copy-grid {
+      height: 100%;
+    }
+    .image-grid {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      bottom: 0;
+      right: 0;
+    }
+    .image-holder {
+      height: 100%;
+    }
+  }
+  @include large {
+    // figure {
+
+    // }
+    .copy {
+      max-width: 25em;
+    }
+  }
+
+  &--left-image {
+    @include medium {
+      background-color: red;
+      
+      .image-grid {
+        left: 0;
+      }
+    }
+  }
+}

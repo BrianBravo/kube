@@ -1,0 +1,218 @@
+@include font-face("Montserrat", font-files("Montserrat-Bold.woff", "Montserrat-Bold.ttf", "Montserrat-Bold.svg"), 
+                                            "Montserrat-Bold.eot",
+                                            600);
+@include font-face("Montserrat", font-files("Montserrat-Regular.woff", "Montserrat-Regular.ttf", "Montserrat-Regular.svg"), 
+                                            "Montserrat-Regular.eot",
+                                            400);
+@include font-face("Montserrat", font-files("Montserrat-Light.woff", "Montserrat-Light.ttf", "Montserrat-Light.svg"), 
+                                            "Montserrat-Light.eot",
+                                            200);
+@include font-face("Futura", font-files("Future-Book.woff", "Future-Book.ttf", "Future-Book.svg"), 
+                                        "Future-Book.eot",
+                                        300);
+
+%montserrat-font {font-family: 'Montserrat', sans-serif;}
+%futura-font {font-family: "futura-pt",sans-serif;}
+
+html {
+  margin: 0 auto;
+  font-weight: 400;
+  font-size: 15px;
+
+  // @include medium {
+  //   font-size: 14px;
+  // }
+  @include large {
+    font-size: 16px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6, li, p, small {
+  line-height: 1.5em;
+  font-size: 1em;
+
+  &.xxx-large {
+                        font-size: 2.00em;      
+    @include medium   { font-size: 2.35em;}
+    @include large    { font-size: 2.70em;}
+    @include x-large  { font-size: 3.05em;}
+    @include xx-large { font-size: 3.40em;}
+    @include xxx-large{ font-size: 3.75em;}
+  }
+  &.xx-large {
+    //                     font-size: ;      
+    // @include medium   { font-size: }
+    // @include large    { font-size: }
+    // @include x-large  { font-size: }
+    // @include xx-large { font-size: }
+    // @include xxx-large{ font-size: }
+  }
+  &.x-large {
+    //                     font-size: ;      
+    // @include medium   { font-size: }
+    // @include large    { font-size: }
+    // @include x-large  { font-size: }
+    // @include xx-large { font-size: }
+    // @include xxx-large{ font-size: }
+  }
+  &.large {
+                        font-size: 1.2em;      
+    @include medium   { font-size: 1.35em;}
+    @include large    { font-size: 1.50em;}
+    @include x-large  { font-size: 1.65em;}
+    @include xx-large { font-size: 1.80em;}
+    @include xxx-large{ font-size: 1.875em;}
+  }
+  &.small {
+    //                     font-size: ;      
+    // @include medium   { font-size: }
+    // @include large    { font-size: }
+    // @include x-large  { font-size: }
+    // @include xx-large { font-size: }
+    // @include xxx-large{ font-size: }
+  }
+  &.bold {
+    font-weight: 600;
+  }
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 200;
+  @extend %montserrat-font;
+  text-transform: uppercase;
+  margin-left: -.05em;
+  margin-bottom: .5em;
+  // line-height: 1.5em;
+}
+
+// h1 {font-size: 1.5em;}
+// h2 {font-size: 1.2em;}
+// h3 {font-size: 1.1em;}
+// h4 {font-size: 1em;}
+// h5 {font-size: .9em;}
+// h6 {font-size: .8em;}
+
+// @include medium {
+//   h1 {font-size: 1.7em;}
+//   h2 {font-size: 1.4em;}
+//   h3 {font-size: 1.2em;}
+//   h4 {font-size: 1.1em;}
+//   h5 {font-size: .9em;}
+//   h6 {font-size: .8em;}
+// }
+// @include large {
+//   h1 {font-size: 1.9em;}
+//   h2 {font-size: 1.7em;}
+//   h3 {font-size: 1.5em;}
+//   h4 {font-size: 1.1em;}
+//   h5 {font-size: .9em;}
+//   h6 {font-size: .8em;}
+// }
+// @include x-large {
+//   h1 {font-size: 2.2em;}
+//   h2 {font-size: 2em;}
+//   h3 {font-size: 1.7em;}
+//   h4 {font-size: 1.1em;}
+//   h5 {font-size: .9em;}
+//   h6 {font-size: .8em;}
+// }
+
+// h1 {
+//   &.large {
+//     @include medium {
+//       font-size: 2.1em;
+//     }
+//     @include large {
+//       font-size: 3em;
+//     }
+//     @include x-large {
+//       font-size: 4em;
+//     }
+//   }
+// }
+p, li {
+  @extend %futura-font;
+}
+// @include tablet-wide {
+//   h1 {font-size: 3.5em;}
+// }
+
+// h1 small {
+//   font-size: .5em;
+//   opacity: .7;
+//   text-transform: uppercase;
+// }
+li, p, small {
+  margin-top: 1em;
+
+  &:first-of-type {
+    margin-top: 0;
+  }
+}
+// p a {
+//   // color: $dark-green-gray;
+
+//   &:active {
+//     // border-bottom: 1px dotted $dark-green-gray;
+//   }
+// }
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.center {
+  text-align: center;
+  
+  &--on-large {
+    @include large {
+      text-align: center;
+    }
+  }
+}
+
+.narrow {
+  &--on-large {
+    @include large {
+      padding: 0 3%;
+    }
+  }
+}
+// p, .copy {
+//   &+ h2 {
+//     margin-top: 2em;
+//   }
+// }
+
+// section .content {
+//   ul, ol {
+//     margin-top: 1.5em;
+//     margin-bottom: 2em;
+//     margin-left: 1.5em;
+//   }
+
+//   p a {
+//     // color: $dark-green-gray;
+//     // border-bottom: 1px dotted $dark-green-gray;
+
+//     &:active {
+//       // color: $purple;
+//       // border-bottom-color: $purple;
+//     }
+
+//     @include desktop {
+//       &:hover {
+//         // color: $purple;
+//         // border-bottom-color: $purple;
+//       }
+//     }
+//   }
+// }
+
+// .soft {
+//   opacity: .7;
+// }
+
+// p small {
+//   font-size: .75em;
+// }

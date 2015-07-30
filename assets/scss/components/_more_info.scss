@@ -1,0 +1,35 @@
+.more-info {
+  @extend %montserrat-font;
+  font-weight: 200;
+  text-transform: uppercase;
+  color: $gray;
+  display: inline-block;
+  font-size: .8em;
+
+  @include large {
+    font-size: .9em;
+  }
+
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+
+  &:after {
+    content: '❯';
+    display: inline-block;
+    color: $main-color;
+    padding-left: .25em;
+    @include transition(all 300ms ease-in-out);
+  }
+
+   &:hover {
+    padding-right: .3em;
+
+    &:after {
+      color: $main-color-dark;
+      padding-left: .5em;
+    }
+  }
+
+}

@@ -1,0 +1,19 @@
+section.vendor-links {
+  text-align: center;
+
+  .image-wrap {
+    width: 47%;
+    margin: 1.5% 1% 1.5%;
+    display: inline-block;
+    border: 1px solid lightgray;
+
+    @include medium {
+      width: 30%;
+    }
+    @include large {
+      max-width: 213px;
+      width: 18%;
+      margin: 0 .7% ;
+    }
+  }
+}

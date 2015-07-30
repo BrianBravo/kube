@@ -1,0 +1,57 @@
+{% set pageId = 'experiences' %}
+{% extends "_layout" %}
+
+{% block content %}
+  {{ sectionMacros.sections(entry) }}
+  
+  <section class="white heading-n-text">
+    <div class="grid-row grid-row--padded">
+      <div class="gs--full">
+        <div class="copy">
+          <h1 class="center large">Header Alt2</h1>
+          <p class="center">Body copy text sizing. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+        </div>
+      </div>
+      <div class="gs--full filter-controls">
+        <ul>
+          <li class="active experience-filter" data-filter="reset">
+            <span>All</span>
+            <svg class="icon icon-triangle-down" role="link" viewBox="0 0 30 30">
+              <use xlink:href="#icon-triangle-down"></use>
+            </svg> 
+          </li>
+          {% for category in craft.categories.group('experienceCategories') %}
+          <li data-filter=".c-{{ category.slug }}" class="experience-filter">
+            <span>{{ category }}</span>
+            <svg class="icon icon-triangle-down" role="link" viewBox="0 0 30 30">
+              <use xlink:href="#icon-triangle-down"></use>
+            </svg> 
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section>
+    <div class="grid-row grid-row--widest">
+      {% for experience in craft.entries.section('kubeExperiences').limit(24) %}
+        {% set categoriesClass = '' %}
+        {% for category in experience.eCategory %}
+            {% set categoriesClass = categoriesClass ~ ' c-' ~ category.slug %}
+        {% endfor %}
+        <div class="gs--full gm--half gl--third experience-box {{ categoriesClass }}">
+          <figure>
+            <img src="{{ experience.eImage.first.url }}" alt="{{ experience.eImage.first }}">
+          </figure>
+          <div class="copy">
+            <h4>{{ experience }}</h4>
+            <p>“{{ experience.eDetails }}”</p>
+            <div class="more-info">
+              <a href="/meet-kube">View experience</a>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

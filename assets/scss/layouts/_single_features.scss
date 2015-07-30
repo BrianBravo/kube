@@ -1,0 +1,20 @@
+.single-feature {
+  .flex {
+    > div {
+      height: 15em;
+
+      @include medium {
+        height: 20em
+      }
+      @include large {
+        height: 30em;
+      }
+      @include x-large {
+        height: 40em;
+      }
+      @include xx-large {
+
+      }
+    }
+  }
+}

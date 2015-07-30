@@ -1,0 +1,112 @@
+{% macro sections(entry) %}
+  {% import _self as auxSectionMacros %}
+
+  {% for section in entry.auxSections %}
+    {% set loopIndex = loop.index %}
+
+    {% switch section.type %}
+
+      {% case "twoColumnTextText" %}
+        {{ auxSectionMacros.twoColumnTextText(section) }}  
+      {% case "partners" %}
+        {{ auxSectionMacros.partners(section) }} 
+      {% case "contactInfo" %}
+        {{ auxSectionMacros.contactInfo(section) }} 
+      {% default %}
+        <p>No section match found</p>
+    {% endswitch %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro twoColumnTextText(section) %}
+  <section class="white">
+    <div class="grid-row grid-row--narrow grid-row--fully-padded">
+      <div class="copy-wrap gs--full">
+        <div class="copy">
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <h1 class="center xxx-large">{{section.heading}}</h1>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          <br>
+          {% if section.twoColumnText|length > 0 %}
+            <div class="two-column-copy">
+              {{ section.twoColumnText|nl2br }}
+            </div>
+          {% endif %}
+          {% if section.text|length > 0 %}
+            <p class="center--on-large narrow--on-large">{{ section.text }}</p>
+          {% endif %}
+          <br>
+          <br>
+          <br>
+          <br>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro partners(section) %}
+  <section class="white half-n-half-w-image bio">
+    <div class="grid-row grid-row--widest grid-row--vcentered-content image-grid">
+      <div class="image-holder gs--full gm--half gm--half--offset" style="background-image: url({{ section.partner1Image.first.url }})">
+      </div>
+    </div>
+    <div class="grid-row grid-row--vcentered-content grid-row--padded copy-grid">
+      <div class="gs--full gm--half">
+        <div class="copy">
+          <h2 class="bold">{{ section.partner1Title}}</h2>
+          <h1 class="large">{{ section.partner1Name }}</h1>
+          <p>{{ section.partner1Details }}</p>
+        </div>
+      </div> 
+    </div>
+  </section>
+  <section class="white half-n-half-w-image half-n-half-w-image--left-image bio">
+    <div class="grid-row grid-row--widest grid-row--vcentered-content image-grid">
+      <div class="image-holder gs--full gm--half" style="background-image: url({{ section.partner2Image.first.url }})">
+      </div>
+    </div>
+    <div class="grid-row grid-row--vcentered-content grid-row--padded copy-grid">
+      <div class="gs--full gm--half gm--half--offset grid-item--padded">
+        <div class="copy">
+          <h2 class="bold">{{ section.partner2Title}}</h2>
+          <h1 class="large">{{ section.partner2Name }}</h1>
+          <p>{{ section.partner2Details }}</p>
+        </div>
+      </div> 
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro contactInfo(section) %}
+  <section class="white contact-info">
+    <div class="grid-row grid-row--fully-padded grid-row--centered-content">
+      <div class="gs--full gm--third">
+        <div class="copy">
+          <h3>{{ section.firstGroupHeading }}</h3>
+          {{ section.firstGroupDetails }}
+        </div>
+      </div>
+      <div class="gs--full gm--third">
+        <div class="copy">
+          <h3>{{ section.secondGroupHeading }}</h3>
+          {{ section.secondGroupDetails }}
+        </div>
+      </div>
+      <div class="gs--full gm--third">
+        <div class="copy">
+          <h3>{{ section.thirdGroupHeading }}</h3>
+          {{ section.thirdGroupDetails }}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}

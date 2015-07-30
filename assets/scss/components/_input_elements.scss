@@ -1,0 +1,11 @@
+input[type="text"], textarea {
+  font-size: 1em;
+  border: 1px solid lightgray;
+  padding: .9em;
+  outline: none;
+  color: $gray;
+  
+  &:focus {
+    border: 1px solid $main-color;
+  }
+}

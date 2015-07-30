@@ -1,0 +1,154 @@
+section.parts-grid {
+  figure {
+    vertical-align: top;
+    position: relative;
+
+    .icon {
+      display: none;
+    }
+
+    @include large {
+      @include default-transition();
+      
+      &:hover {
+        h4 {
+          color: $main-color;
+        }
+        p {
+          height: 3em;
+          opacity: 1;
+        }
+        .icon {
+          opacity: 0;
+          height: 0em;
+          margin: 0 auto;
+          fill: $main-color;
+        }
+      }
+
+      p, .icon {
+        @include default-transition();
+      }
+      p {
+        height: 0em;
+        opacity: 0;
+        margin-top: 0;
+      }
+      .icon {
+        display: block;
+        margin: 1em auto;
+        width: 1em;
+        height: 1em;
+        fill: $black;
+      }
+    }
+  }
+
+  .row:first-of-type {
+    text-align: center;
+    margin-bottom: 2em;
+
+    .copy, img {
+      vertical-align: middle;
+      display: inline-block;
+    }
+    .copy {
+      width: 80%;
+      margin-bottom: 1em;
+    }
+    img {
+      width: 46%;
+      margin: 0 1.5% 2em;
+    }
+    @include large {
+      margin-bottom: 2em;
+      text-align: left;
+
+      .copy {
+        width: 42.85714286%;
+      }
+      img {
+        width: 23.57142857%;
+        margin: 0 2%;
+      }
+    }
+    @include x-large {
+      .copy {
+        padding-right: 5%;
+      }
+      img {
+        width: 20%;
+        margin: 0 4%;
+      }
+    }
+  }
+
+  .row:last-of-type {
+    text-align: center;
+
+    figure {
+      margin-bottom: 2em;
+
+      img {
+        width: 70%;
+        display: inline-block;
+      }
+    }
+
+    @include medium {
+      figure {        
+        &:nth-of-type(3n+1) {
+          padding: 0 3% 0 0;
+        }
+        &:nth-of-type(3n+2){
+          padding: 0 0 0 3%;
+        }
+         &:nth-of-type(3n+3){
+          padding: 0 1.5%;
+        }
+
+        h4 {
+          font-weight: 500;
+        }
+
+        &:last-of-type {
+          margin-bottom: 0;
+        }
+      }
+    }
+
+    @include large {
+      text-align: left;
+      padding-top: 1em;
+
+      figure {
+        // width: 29%;
+
+        &:nth-of-type(3n+1) {
+          padding: 0 3% 0 0;
+        }
+        &:nth-of-type(3n+2){
+          padding: 0 1.5%;
+        }
+         &:nth-of-type(3n+3){
+          padding: 0 0 0 3%;
+        }
+
+        img {
+          width: 100%;
+        }
+
+        h4 {
+          text-align: center;
+        }
+      }
+    }
+
+    @include x-large {
+      figure {
+        // width: 26%;
+        // padding: 0 5%;
+      }
+    }
+  }
+}

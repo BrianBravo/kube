@@ -1,0 +1,55 @@
+$small:     20.625em;
+$medium:    38.75em;
+$large:     48.75em;
+$x-large:   64em;
+$xx-large:  80em; 
+$xxx-large: 100em;
+
+//media queries
+@mixin small {
+  @media (min-width: #{$small}) {
+    @content;
+  }
+}
+@mixin medium {
+  @media (min-width: #{$medium}) {
+    @content;
+  }
+}
+@mixin large {
+  @media (min-width: #{$large}) {
+    @content;
+  }
+}
+@mixin x-large {
+  @media (min-width: #{$x-large}) {
+    @content;
+  }
+}
+@mixin xx-large {
+  @media (min-width: #{$xx-large}) {
+    @content;
+  }
+}
+@mixin xxx-large {
+  @media (min-width: #{$xxx-large}) {
+    @content;
+  }
+}
+@mixin custom-width($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}
+
+.mq-tracker {
+  position: fixed;bottom: 0;left: 0;width: 100%;height: 2em;line-height: 2em;z-index: 9000;background-color: #FFBC67;opacity: .8;
+  &:after {content: '[default]';position: absolute;bottom: 0;left: 10px;color: black;}
+  @include small { background-color: #DA727E;&:after{content:'min-width: 20.625em [small]';color:white;}}
+  @include medium { background-color: #AC6C82;&:after{content:'min-width: 28.75em [medium]';}}
+  @include large { background-color: #685C79;&:after{content:'min-width: 48.75em [large]';}}
+  @include x-large {background-color: #455C7B;&:after{content:'min-width: 64em [x-large]';}}
+  @include xx-large {background-color: #FFBC67;&:after{content:'min-width: 80em [xx-large]';color:black;}}
+  @include xxx-large {background-color: #DA727E;&:after{content:'min-width: 100em [xxx-large]';color:white;}}
+  // @include desktop-widest {background-color: #AC6C82;&:after{content:'min-width: 1800px [desktop-widest]';}}
+}

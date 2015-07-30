@@ -1,0 +1,156 @@
+.main-nav {
+  position: fixed;
+  top: -100%;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: fade-out($main-color, .05);
+  z-index: 9;
+  color: $white;
+  @include transition(all 350ms ease-in-out);
+  overflow: hidden;
+
+  ul {
+    width: 80%;
+    max-width: 40em;
+    border-right: 1px solid transparent;
+    padding: 5em 0;
+
+    li {
+      margin-bottom: 1em;
+      display: block;
+      position: relative;
+
+      a {
+        font-size: 1.5em;
+        @extend %montserrat-font;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 200;
+        opacity: .75;
+
+        &:hover {
+          opacity: 1;
+        }
+      }
+
+      &.active a{
+        opacity: 1;
+
+        &:before {
+          content: "▶";
+          display: block;
+          position: absolute;
+          left: -1.25em;
+          top: 0;
+          width: 1em;
+          font-size: .8em;
+          color: inherit;
+
+          @include large {
+            font-size: .5em;
+          }
+        }
+      }
+      &:last-of-type {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .cta-column {
+    visibility: hidden;
+  }
+
+  .close-btn {
+    position: absolute;
+    width: 2.5em;
+    height: 2.5em;
+    top: 1.4em;
+    right: 1.4em;
+    z-index: 11;
+    @include transition(all 100ms ease-in-out);
+
+    .icon {
+      fill: $white;
+    }
+
+    &:active {
+      @include transform (scale(.8));
+    }
+
+    @include medium {
+      top: 2em;
+      right: 2em;
+    }
+    @include large {
+      top: 2.65em;
+      right: 2.65em;
+    }
+  }
+
+  &--opened {
+    top: 0;
+  }
+
+  @include medium {
+    ul {
+      border-color: $white;
+
+      li a {
+        font-size: 1.65em;
+      }
+    }
+
+    .cta-column {
+      visibility: visible;
+      text-align: center;
+
+      img {
+        width: 80%;
+        margin: 0 auto .8em;
+      }
+      p {
+        margin: .8em 0;
+      }
+    }
+  }
+
+  @include large {
+    ul {
+      li {
+        margin-bottom: 1.5em;
+
+        a {
+        font-size: 2em;
+        }
+      }
+    }
+
+    .menu-options, .cta-column {
+      width: 50%;
+    }
+    .menu-options {
+      padding-left: 5%;
+    }
+    .cta-column {
+      padding-right: 5%;
+    }
+  }
+  @include x-large {
+    ul {
+      li {
+        margin-bottom: 2em;
+        a{
+          font-size: 2.5em;
+        }
+      }
+    }
+    .menu-options {
+      padding-left: 10%;
+    }
+    .cta-column {
+      padding-right: 10%;
+    }
+  }
+}

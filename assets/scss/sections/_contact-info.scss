@@ -1,0 +1,25 @@
+section.contact-info {
+  .copy {
+    margin-bottom: 1.5em;
+
+    @include medium {
+      margin: 0;
+      padding-left: 2em;
+    }
+    @include large {
+      padding-left: 4em;
+    }
+  }
+  h3 {
+    font-size: 1em;
+    color: $main-color-light;
+    font-weight: 500;
+  }
+  p {
+    margin: 0;
+  }
+
+  @include large {
+    padding: 2em 0;
+  }
+}

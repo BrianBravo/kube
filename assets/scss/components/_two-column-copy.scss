@@ -1,0 +1,11 @@
+.two-column-copy {
+  margin-bottom: 1.5em;
+
+  @include medium {
+    @include two-columns(2, 3em, 3, 2);
+    margin-bottom: 2em;
+  }
+  @include large {
+    margin-bottom: 3em;
+  }
+}

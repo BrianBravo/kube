@@ -1,0 +1,33 @@
+.call-to-action {
+    height: 20em;
+
+    @include medium {
+      // height: 22em;
+    }
+    @include large {
+      height: 26em;
+    }
+    @include x-large {
+      height: 32em;
+    }
+
+  .image-wrap {
+    height: 5em;
+
+    img {
+      position: absolute;
+      right: -3%;
+      bottom: 0;
+      width: 50%;
+    }
+
+    @include medium {
+      height: auto;
+      position: static;
+
+      img {
+        right: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,20 @@
+$black:            rgb(76,76,76);
+$white:            rgb(255,255,255);
+$off-white:        rgb(249,249,249);
+$off-white-dark:   rgb(247,247,247);
+$off-white-darker: rgb(230,230,230);
+
+$gold:             rgb(252,162,76);
+$gold-light:       lighten($gold, 5%);
+$gold-dark:        darken($gold, 5%);
+$gray:             rgb(153,153,153);
+
+$turquoise:         rgb(46, 214, 214);
+$turquoise-dark:    rgb(25, 194, 194);
+$turquoise-light:   rgb(129, 223, 221);
+
+
+//
+$main-color:          $turquoise-dark;
+$main-color-dark:    $turquoise;
+$main-color-light:    $turquoise-light;

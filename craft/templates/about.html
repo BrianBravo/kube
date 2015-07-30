@@ -1,0 +1,9 @@
+{% set pageId = 'about' %}
+{% set headerClass = 'dark' %}
+{% set pageClass = 'aux-page' %}
+
+{% extends "_layout" %}
+
+{% block content %} 
+  {{ auxSectionMacros.sections(entry) }}
+{% endblock %}

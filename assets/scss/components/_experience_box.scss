@@ -1,0 +1,48 @@
+.experience-box { 
+  @include transition(all 350ms ease-in-out);
+  overflow: hidden;
+   
+  .copy {
+    padding: 1em;
+    border: 1px solid lightgray;
+
+    @include medium {
+      padding: 2em;
+    }
+    @include large {
+      padding: 3em;
+    }
+  }
+  
+  h4 {
+    @extend %montserrat-font;
+    font-weight: 600;
+  }
+
+  p {
+    font-style: italic;
+  }
+  .more-info {
+    margin-top: 1em;
+  }
+
+  &:nth-of-type(even){
+    .copy {
+      border-left: none;
+    }
+  }
+
+  @include large {
+    &:nth-of-type(n) {
+      .copy {
+        border: 1px solid lightgray;
+      }
+    }
+    &:nth-of-type(3n-1){
+      .copy {
+        border-left: none;
+        border-right: none;
+      }
+    }
+  }
+}

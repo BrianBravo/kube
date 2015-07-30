@@ -1,0 +1,214 @@
+%button {
+  display: inline-block;
+  background-color: transparent;
+  padding: .7em 2em;
+  text-transform: uppercase;
+  font-size: .8em;
+  font-weight: 400;
+  @extend %montserrat-font;
+  color: $black;
+  line-height: 1.5em;
+  position: relative;
+  @include pie-clearfix;
+  outline: none;
+  border: 3px solid $main-color;
+  border-top-color: transparent;
+  border-bottom-color: transparent;
+
+  &:after, &:before {
+    display: block;
+    content: '';
+    position: absolute;
+    height: 3px;
+    width: 3px;
+    background-color: $main-color;
+    top: -3px;
+    @include transition(width 200ms ease-in-out);
+  }
+  &:after { //top left border
+    width: 10%;
+    left: -3px;
+  }
+  &:before { //top right border
+    width: 25%;
+    right: -3px;
+  }
+
+  .button__text {
+    position: relative;
+    z-index: 3;
+  }
+  .border-helper {
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    left: 0;
+    top: 0;
+    z-index: 2;
+
+    &:after, &:before {
+      display: block;
+      content: '';
+      position: absolute;
+      height: 3px;
+      width: 3px;
+      background-color: $main-color;
+      bottom: -3px;
+      @include transition(width 200ms ease-in-out);
+    }
+    &:after { //bottom left border
+      width: 25%;
+      left: -3px;
+    }
+    &:before { //bottom right border
+      width: 10%;
+      right: -3px;
+    }
+  }
+  .background-helper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 0;
+    background-color: $main-color;
+    @include transition(width 200ms ease-in-out);
+    z-index: 1;
+  }
+
+  &:hover {
+    &:after {
+      width: 100%;
+    }
+
+    .border-helper {
+      &:before {
+        width: 100%;
+      }
+    }
+    .background-helper{
+      width: 100%;
+      @include transition(width 200ms ease-in-out 200ms);
+    }
+  }
+  .line{
+    position: absolute;
+    display: block;
+    height:3px;
+    width: 3px;
+    background-color: $main-color;
+
+    &.right {
+      right: 0;
+
+      &.top {
+        top: 0;
+        width: 25%;
+      }
+      &.bottom {
+        bottom: 0;
+        width: 10%;
+      }
+    }
+    &.left {
+      left: 0;
+
+      &.top {
+        top: 0;
+        width: 10%;
+      }
+      &.bottom {
+        bottom: 0;
+        width: 25%;
+      }
+    }
+  }
+  &.white {
+    color: $white;
+  }
+  &.solid {
+    background-color: $main-color;
+    border-color: transparent;
+    color: $white;
+
+    &:active {
+      background-color: $main-color-dark;
+    }
+    &:hover {
+      background-color: $main-color-dark;
+    }
+  }
+}
+
+.btn, input[type=submit] {
+  @extend %button;
+}
+
+button {
+  &.jelly {
+    background-color: transparent;
+    position: relative;
+    border: 0;
+    outline: none;
+    line-height: 3em;
+    font-size: .8em;
+    font-weight: 400;
+    color: $white;
+    @extend %montserrat-font;
+    text-transform: uppercase;
+    padding:.5em 3em;
+    margin-left: -.35em;
+
+    .morph-shape {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+
+    svg {
+      fill: $main-color;
+    }
+
+    .button__text {
+      display: block;
+      padding: 0;
+      text-align: center;
+      position: relative;
+      z-index: 100;
+      // font-size: 1.5em;
+      // color: rgb(255, 255, 255);
+      // font-weight: bold;
+    }
+
+    &:hover {
+      svg {
+        fill: $main-color-dark;
+      }
+    }
+  }
+  
+  &.white {
+    color: $main-color;
+
+    svg {
+      fill: $white;
+    }
+
+    &:hover {
+      svg {
+        fill: darken($white, 2%);
+      }
+    }
+  }
+}
+
+// .btn + .btn {
+//   margin-top: 1.5em;
+
+//   @include mobile-wide {
+//     margin-top: 0;
+//     margin-left: 1em;
+//   }
+// }

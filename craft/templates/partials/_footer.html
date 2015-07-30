@@ -1,0 +1,67 @@
+<footer>
+  <section class="gray footer-links">
+    <div class="grid-row grid-row--fully-padded">
+      <div class="gs--full">
+        <ul>
+          {% for link in craft.entries.title('Footer Navigation').first.links %}
+            {% switch link.type %}
+              {% case "internalPageLink" %}
+                <li class="{{ pageId == 'features' ? 'active' : '' }}"><a href="{{ link.page.first.url }}">{{ link.label|length > 0 ? link.label : link.page.first.title }}</a></li>
+              {% case "customLink" %}
+                <li class="{{ pageId == 'blog' ? 'active' : '' }}"><a href="{{ link.url }}">{{ link.label }}</a></li>
+              {% default %}
+                <li>Nope</li>
+            {% endswitch %}
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="gray newsletter-signup">
+    <div class="grid-row">
+      <div class="gs--full">
+        <form action="">
+          <label>Stay tuned to the party</label>
+          <input type="text">
+          <input class="solid gold" type="submit" value="sign up">
+        </form>
+      </div>
+    </div>
+  </section>
+  <section class="gray social-links">
+    <div class="grid-row">
+      <div class="gs--full">
+        <ul>
+          <li>
+            <a href="/">
+              <svg class="icon icon-facebook" role="link" viewBox="0 0 30 30">
+                <use xlink:href="#icon-facebook"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <svg class="icon icon-twitter" role="link" viewBox="0 0 30 30">
+                <use xlink:href="#icon-twitter"></use>
+              </svg>
+            </a>
+          </li>
+          <li>
+            <a href="/">
+              <svg class="icon icon-youtube" role="link" viewBox="0 0 30 30">
+                <use xlink:href="#icon-youtube"></use>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <section class="gray credits">
+    <div class="grid-row">
+      <div class="gs--full">
+        <p>Kube is a Thomas + Darden product, makers of beautiful and useful things.</p>
+      </div>
+    </div>
+  </section>
+</footer>

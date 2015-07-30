@@ -1,0 +1,88 @@
+section.feature-list {
+  .feature {
+    margin-bottom: 1.5em;
+
+    h2 {
+      font-size: 1em;
+      font-weight: 600;
+    }
+
+    @include medium {
+      cursor: pointer;
+      margin-bottom: 1em;
+
+      &:hover {
+        h2 {
+          color: $main-color;
+        }
+      }
+      p {
+        display: none;
+      }
+    }
+
+    @include large {
+      margin-bottom: 2em;
+
+      p {
+        display: block;
+      }
+    }
+
+    &--active {
+      @include medium {
+        h2 {
+          color: $main-color;
+          position: relative;
+
+          &:before {
+            content: "▶";
+            display: block;
+            position: absolute;
+            left: -1.25em;
+            top: 0;
+            width: 1em;
+            font-size: .9em;
+          }
+        }
+
+        p {
+          display: block;
+        }
+      }
+    }
+  }
+
+  .more-info {
+    margin-top: 3em;
+  }
+
+  .image-wrap {
+    margin-top: 1.5em;
+    position: relative;
+    display: none;
+
+    img {
+      width: 70%;
+      position: absolute;
+      margin: auto;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin-left: 0;
+      opacity: 0;
+      @include transition(opacity 400ms ease-in-out);
+
+      &.active {
+        opacity: 1;
+        @include transition(opacity 200ms ease-in-out);
+      }
+    }
+
+    @include medium {
+      margin-top: 0;
+      display: block;
+    }
+  }
+}

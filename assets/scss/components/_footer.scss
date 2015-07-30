@@ -1,0 +1,83 @@
+footer {
+  font-size: .9em;
+
+  .footer-links {
+    ul {
+      text-align: center;
+      padding: 2em 0 3em;
+      border-bottom: 1px solid lightgray;
+
+      @include large {
+        padding: 0 0 3em;
+      }
+      @include x-large {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 80em;
+      }
+    }
+    li {
+      display: inline-block;
+      margin: 3% 1.25em;
+      text-transform: uppercase;
+      color: $gray;
+      font-size: .9em;
+      @extend %montserrat-font;
+      font-weight: 200;
+
+      @include large {
+        margin: 3% 1.5em;
+      }
+      @include x-large {
+        margin: 3% 1.85em;
+      }
+    }
+  }
+
+  .icon {
+    width: 30px;
+    height: 30px;
+    border: 1px solid lighten(lightgray, 5%);
+    fill: $black;
+
+    &:active {
+      fill: $main-color;
+      border-color: $main-color;
+    }
+
+    @include x-large {
+      &:hover {
+        fill: $main-color;
+        border-color: $main-color;
+      }
+    }
+  }
+
+  .social-links {
+    padding: 0;
+
+    ul {
+      text-align: center;
+    }
+    li {
+      display: inline-block;
+      margin: 0 .35em;
+    }
+  }
+
+  .credits {
+    font-size: .8em;
+    color: $gray;
+    text-align: center;
+    padding-bottom: 1em;
+
+    p {
+      width: 19em;
+      margin: 0 auto;
+
+      @include custom-width(28em) {
+        width: 100%;
+      }
+    }
+  }
+}

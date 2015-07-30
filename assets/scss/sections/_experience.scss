@@ -1,0 +1,145 @@
+section.experience {
+  @include pie-clearfix;
+
+  .copy {
+    text-align: center;
+    max-width: 35em;
+  }
+
+  .wide, .tall, .half {
+    height: 15em;
+  }
+
+  .wide {
+    @include medium {
+      height: 20em;
+    }
+    @include large {
+      .copy {
+        text-align: left;
+      }
+    }
+    @include x-large {
+      height: 25em;
+    }
+  }
+  .tall {
+    @include medium {
+      height: 20em;
+    }
+    @include large {
+      position: absolute;
+      height: 40em;
+      width: 33.33333%;
+      top: 0;
+      right: 0;
+    }
+    @include x-large {
+      height: 50em;
+    }
+  }
+  .half {
+    @include medium {
+      height: 20em;
+    }
+    @include x-large {
+      height: 25em;
+    }
+  }
+
+  // .image-wrap {
+  //   padding: 0;
+
+  //   .image {
+  //     background-size: cover;
+  //     height: 0;
+  //     padding-bottom: 100%;
+  //     display: none;
+  //     background-position: center;
+
+  //     &.small {
+  //       display: block;
+  //     }
+  //     &.half, .wide {
+  //       padding-bottom: 50%;
+  //     }
+  //   }
+
+  //   @include medium {
+  //     .image {
+  //       &.small, &.large {
+  //         display: none;
+  //       }
+  //       &.medium {
+  //         display: block;
+  //       }
+  //       &.wide {
+  //         height: 20em;
+  //         padding: 0;
+  //       }
+  //       &.half {
+  //         padding-bottom: 70%;
+  //       }
+  //       &.tall {
+  //         height: 40em;
+  //         padding: 0;
+  //       }
+  //     }
+  //   }
+  //   @include large {
+  //     .image {
+  //       &.tall {
+  //         height: 50em;
+  //       }
+  //       &.wide {
+  //         height: 25em;
+  //       }
+  //     }
+  //   }
+  // }
+
+  // .copy-wrap {
+  //   .copy {
+  //     width: 100%;
+  //     text-align: center;
+  //   }
+  //   &.wide {
+  //     height: 20em;
+  //   }
+  //   @include medium {
+  //     &.wide {
+  //       height: 20em;
+        
+  //       .copy {
+  //         text-align: left;
+  //       }
+  //     }
+
+  //   }
+  //   @include large {
+  //     &.wide {
+  //       height: 25em;
+  //     }
+  //   }
+  //   @include x-large {
+  //     &.wide {
+  //       padding-left: 7.3333%;
+  //     }
+  //   }
+  // }
+}
+
+section.experience.alt {
+  .medium-plus {
+    display: none;
+  }
+
+  @include medium {
+    .medium-plus {
+      display: block;
+    }
+    .small {
+      display: none;
+    }
+  }
+}

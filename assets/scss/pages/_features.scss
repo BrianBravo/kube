@@ -1,0 +1,118 @@
+body.features {
+  section.kube-opened {
+    background-image: image-url('pages/features/kube-opened.jpg');
+    background-size: cover;
+    background-position: center;
+    height: 20em;
+
+    // .copy-wrap {
+      // height: 16em;
+
+      @include medium {
+        height: 20em;
+
+        .copy-wrap {
+          position: relative;
+          top: -25%;
+        }
+      }
+      @include large {
+        height: 30em;
+        // margin-left: 0;
+
+        .copy {
+          width: 37em;
+          margin: 0 auto;
+        }
+      }
+      @include x-large {
+        height: 40em;
+      }
+    // }
+  }
+  section.first-single-feature {
+    img {
+      width: 70%;
+      margin: 0 auto;
+
+      @include medium {
+        width: 90%;
+      }
+    }
+
+    @include large {
+      .copy {
+        max-width: 25em;
+      }
+    }
+  }
+  section.accessories {
+    .cta-wrapper .copy{
+      text-align: center;
+    }
+    .accessory {
+      height: 16em;
+      border: 1px solid $off-white-darker;
+      padding: 0;
+      overflow: hidden;
+      position: relative;
+
+      .image-holder {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-size: cover;
+      }
+      @include medium {
+        height: 16em;
+      }
+      @include x-large {
+        height: 17.5em;
+      }
+      @include xx-large {
+        height: 23.5em;
+      }
+
+      &--no-border {
+        border: none;
+      }
+      
+      &--animated {
+        .copy {
+          padding: 1em;
+          margin-top: -80%;
+          background-color: fade-out($black, .8);
+          height: 100%;
+
+          @include medium {
+            padding: 2em;
+          }
+          @include x-large {
+            padding: 3em;
+          }
+          @include xx-large {
+            padding: 4em;
+          }
+        }
+
+        @include x-large {
+          .copy {
+            margin-top: 0;
+            height: auto;
+            background-color: transparent;
+          }
+          .image-holder {
+            @include transition(all 350ms ease-out);
+          }
+          &:hover {
+            .image-holder {
+              top: -100%;
+            }
+          }
+        }
+      }
+    }
+  }
+}

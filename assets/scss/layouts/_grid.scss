@@ -1,0 +1,185 @@
+//Settings
+$default-gutter:  1%;   //left and right padding
+$breakpoints:     mobile-wide tablet tablet-wide desktop; //small medium large x-large xx-large xxx-large;
+$max-width:       80em;  //regular width
+$max-width-plus:  95em;  //wide width
+$narrow-width:    60em;
+
+@mixin grid-items() {
+  &--f1{
+    @include flex-grow(1);
+  }
+  &--f2{
+    @include flex-grow(2);
+  }
+  &--f3{
+    @include flex-grow(3);
+  }
+  &--f4{
+    @include flex-grow(4);
+  }
+  &--full {
+    width: 100%;
+  }
+  &--half {
+    width: 50%;
+    margin-left: 0;
+
+    &--offset {
+      margin-left: 50%;
+    }
+  }
+  &--third {
+    width: 33.33333333%;
+    margin-left: 0;
+  
+    &x2 {
+      width: 66.66666667%;
+    }
+    &--offset {
+      margin-left: 33.33333333%;
+    }
+  }
+  &--fourth {
+    width: 25%;
+    margin-left: 0;
+
+    &--offset {
+      margin-left: 25%;
+    }
+  }
+  &--fifth {
+    width: 20%
+  }
+  &--sixth {
+    width: 16.66666667%
+  }
+  &--seventh {
+    width: 14.28571429%;
+  }
+  &--eight {
+    width: 12.5%;
+  }
+  &--ninth {
+    width: 11.11111111%;
+    &x4{
+      width: 44.4444444%;
+    }
+    &--offset {
+      margin-left: 11.11111111%;
+    }
+  }
+  &--tenth {
+    width: 10%;
+  }
+  &--eleventh {
+    width: 9.090909091%
+  }
+  &--twelveth {
+    width: 8.333333333%;
+
+    &--offset {
+      margin-left: 8.333333333%;
+    }
+  }
+  &--reset {
+    width: auto;
+  }
+}
+
+
+.grid-row {
+  max-width: $max-width;
+  
+  &--narrow {
+    max-width: $narrow-width;
+  }
+  &--wide {
+    max-width: $max-width-plus;
+  }
+  &--widest {
+    max-width: none;
+  }
+}
+.grid-row {
+  // max-width: $max-width;
+  margin: 0 auto;
+  @include display-flex;
+  @include flex-wrap(wrap);
+
+  &--padded {
+    padding: 0 10px;
+
+    @include medium {
+      padding: 0 20px;
+    }
+    @include large {
+      padding: 0 30px;
+    }
+  }
+  &--fully-padded {
+    padding: 2em 10px;
+
+    @include medium {
+      padding: 3em 20px;
+    }
+    @include large {
+      padding: 4em 30px;
+    }
+    @include x-large {
+      padding: 5em 30px;
+    }
+  }
+  // &--wide {
+  //   max-width: $max-width-plus;
+  // }
+  // &--widest {
+  //   max-width: none;
+  // }
+  &--centered-content {
+    @include align-items(center);
+    @include justify-content(center);
+    height: 100%;
+  }
+  &--vcentered-content {
+    @include align-items(center);
+    height: 100%;
+  }
+  &--hcentered-content {
+    @include justify-content(center);
+  }
+
+  .gs {@include grid-items;}
+
+  @include medium {
+    .gm {@include grid-items;}
+  }
+  @include large {
+    .gl {@include grid-items;}
+  }
+  @include x-large {
+    .gxl {@include grid-items;}
+  }
+  @include xx-large {
+    .gxxl {@include grid-items;}
+  }
+  @include xxx-large {
+    .gxxxl {@include grid-items;}
+  }
+}
+
+.grid-item {
+  &--padded {
+    padding: 0 1%;
+
+    @include medium {
+      padding: 0 2%
+    }
+    @include large {
+      padding: 0 4%;
+    }
+    @include x-large {
+      padding: 0 6%;
+    }
+  }
+}

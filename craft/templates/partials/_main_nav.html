@@ -1,0 +1,42 @@
+<nav class="main-nav">
+  <div class="close-btn">
+    <svg class="icon icon-x" role="link" viewBox="0 0 30 30">
+      <use xlink:href="#icon-x"></use>
+    </svg>
+  </div>
+  <div class="flex">
+    <div class="g1-flex4 g2-flex3 with-centered-content menu-options">
+      <ul>
+        {% for link in craft.entries.title('Main Navigation').first.links %}
+          {% switch link.type %}
+            {% case "internalPageLink" %}
+              <li class=""><a href="{{ link.page.first.url }}">{{ link.label|length > 0 ? link.label : link.page.first.title }}</a></li>
+            {% default %}
+              <li class=""><a href="{{ link.url }}">{{ link.label }}</a></li>
+          {% endswitch %}
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="g1-flex4 g2-flex3 with-centered-content cta-column">
+      <div class="content">
+        <div class="image-wrap">
+          <img src="/images/nav/kube-illustration.png" alt="">
+        </div>
+        <div class="copy">
+          <h2>Bring KUBE home</h2>
+          <p>Exceptional, portable sound with insulated storage from $999</p>
+        </div>
+        <div class="button-wrap">
+          <button class="button jelly white button--line button--effect-1">
+            <span class="morph-shape" data-morph-active="M286,113c0,0-68.8,9-136,9c-78.2,0-137-9-137-9S3,97.198,3,62.5C3,33.999,13,12,13,12S72,2,150,2c85,0,136,10,136,10s11,17.598,11,52C297,96.398,286,113,286,113z">
+              <svg width="100%" height="100%" viewBox="0 0 300 125" preserveAspectRatio="none">
+                <path d="M286.5,113c0,0-104,0-136.5,0c-35.75,0-136.5,0-136.5,0s0-39.417,0-52.5c0-12.167,0-48.5,0-48.5s101.833,0,136.5,0c33.583,0,136.5,0,136.5,0s0,35.917,0,48.5C286.5,73.167,286.5,113,286.5,113z"/>
+              </svg>
+            </span>
+            <span class="button__text">Buy</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

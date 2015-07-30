@@ -1,0 +1,55 @@
+.newsletter-signup {
+  padding: 2em 0;
+
+  label, input {
+    display: block;
+    width: 100%;
+    margin: 0 auto 1em;
+    @extend %montserrat-font;
+    text-align: center;
+    text-transform: uppercase;
+    width: 280px;
+  }
+
+  input[type="submit"] {
+    font-size: 1em;
+    font-weight: 400;
+  }
+
+  @include medium {
+    text-align: center;
+
+    input {
+      display: inline-block;
+      width: 50%;
+      margin-top: 1em;
+
+      &[type="submit"] {
+        width: 10em;
+      }
+    }
+  }
+  @include large {
+    form {
+      width: 48em;
+      margin: 0 auto;
+      @include pie-clearfix;
+    }
+    label, input {
+      display: block;
+      float: left;
+      margin-top: 0;
+      width: auto;
+    }
+    input[type="text"] {
+      width: 300px;
+      margin-left: 2em;
+      position: relative;
+      right: -1px;
+      padding-bottom: .8em;
+    }
+    label {
+      padding-top: 1em;
+    }
+  }
+}

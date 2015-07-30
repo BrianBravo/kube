@@ -1,0 +1,266 @@
+// --- Variables
+// ---------------------------------------------------
+ 
+// grid
+$gutter: 10;
+$lg-gutter: 10;
+$max-width: 1500;//1115; // Max grid wrap width
+$max-width-wide: 1600;//1300; // Max grid wrap width for wide sections
+$max-width-extra-wide: 2200; // Max grid wrap width for extra wide sections
+$sm-column-count: 4;
+$med-column-count: 6;
+$lg-column-count: 9;
+$mqs: 20.625em;//420; // small breakpoint
+$mq1: 520; // Mid range breakpoint
+$mq2: 38.75em;//700; // Med screen breakpoint
+$mq3: 48.75em;//1054; // Large screen breakpoint
+$mq4: 64em;//1325; // xlarge screen breakpoint
+
+$base: 16;
+
+// --- end variables ---------------------------------
+
+// --- Mixins
+// ---------------------------------------------------
+
+// clearfix
+@mixin clearfix {
+  &:after {
+    content: "";
+    display: table;
+    clear: both; }
+    *zoom: 1;
+}
+// Calculate small screen grid based on $sm-column-count
+@mixin sm-grid($columns) {
+  width: $columns * (100% / $sm-column-count);
+  padding: 0 $gutter+px;
+  padding: 0 $gutter/$base+rem;
+}
+// Calculate med screen grid based on $med-column-count
+@mixin med-grid($columns) {
+  width: $columns * (100% / $med-column-count);
+  padding: 0 $gutter+px;
+  padding: 0 $gutter/$base+rem;
+}
+// Calculate large screen grid based on $lg-column-count
+@mixin lg-grid($columns) {
+  width: $columns * (100% / $lg-column-count);
+  padding: 0 $gutter+px;
+  padding: 0 $gutter/$base+rem;
+}
+
+// Flex parent container
+.flex {
+  @include clearfix;
+  position: relative;
+  clear: both;
+  padding: $gutter/2+px $gutter+px;
+  display: block;
+  max-width: $max-width+px;
+  max-width: $max-width/$base+rem;
+  margin: 0 auto;
+  height: 100%;
+
+  &.flex-wide {
+    max-width: $max-width-wide+px;
+    max-width: $max-width-wide/$base+rem;
+  }
+  &.flex-extra-wide {
+    max-width: $max-width-extra-wide+px;
+    max-width: $max-width-extra-wide/$base+rem;
+  }
+  &.flex-no-max-width {
+    max-width: none;
+  }
+  &.tuck {
+    padding: 0 $gutter+px;
+  }
+
+  &.no-padding{
+    padding: 0;
+  }
+
+  // Grid class objects
+  @for $i from 1 through $sm-column-count {
+    .g1-flex#{$i} {
+      // @if $i != 3 {
+        float: left;
+      // }
+      @include sm-grid($i);
+
+      &.push{
+        float: right;
+      }
+      &.no-padding {
+        padding: 0;
+      }
+    }
+  }
+  .g1-hide, .g2-hide {
+    display: none;
+  }
+  .g1-show {
+    display: block;
+  }
+  // Adjust padding for nested items
+  .flex-nested {
+
+    &:first-child,
+    &.g1-flex4:last-child {
+      padding-left: 0;
+    }
+  }
+
+  @media all and (min-width: $mq2) {
+    // Grid class objects for med screens
+    @for $i from 1 through $med-column-count {
+      .g2-flex#{$i} {
+        // @if $i != $med-column-count {
+          float: left;
+        // }
+        @include med-grid($i);
+
+        &.push{
+          float: right;
+        }
+        &.no-padding {
+          padding: 0;
+        }
+      }
+
+      .g2-offset#{$i} {
+        margin-left: $i/$lg-column-count *100%;
+      }
+    }
+    .g2-show {
+      display: block;
+    }
+    .g2-hide {
+      display: none;
+    }
+    .g2-flex-half {
+      width: 50%;
+    }
+    // Adjust padding for nested items
+    .flex-nested {
+      &:last-child {
+        padding-right: 0;
+      }
+      &.g1-flex4:last-child {
+        padding-left: $gutter+px;
+        padding-left: $gutter/$base+rem;
+      }
+      &.g1-flex4:first-child {
+        padding-left: 0;
+      }
+    }
+  }
+  @media all and (min-width: $mq3) {
+    padding: $lg-gutter/2+px $lg-gutter+px;
+
+    // Grid class objects for large screens
+    @for $i from 1 through $lg-column-count {
+      .g3-flex#{$i} {
+        // @if $i != $lg-column-count {
+          float: left;
+        // }
+        @include lg-grid($i);
+
+        &.push{
+          float: right;
+        }
+        &.no-padding {
+          padding: 0;
+        }
+      }
+      .g3-offset#{$i} {
+        margin-left: $i/$lg-column-count *100%;
+      }
+    }
+    .g3-show {
+      display: block;
+    }
+    .g3-hide {
+      display: none;
+    }
+    .g3-right-offset1 {
+      margin-right: 1/$lg-column-count *100%;
+    }
+    // .g3-offset1 {
+    //   margin-left: 8.4%;
+    // }
+    // .g3-offset2 {
+    //   margin-left: 16.8%;
+    // }
+    // .g3-offset3 {
+    //   margin-left: 25.2%;
+    // }
+  }
+  @media all and (min-width: $mq4) {
+    padding: $lg-gutter/2+px $lg-gutter+px;
+
+    // Grid class objects for large screens
+    @for $i from 1 through $lg-column-count {
+      .g4-flex#{$i} {
+          float: left;
+        @include lg-grid($i);
+
+        &.push{
+          float: right;
+        }
+        &.no-padding {
+          padding: 0;
+        }
+      }
+      .g4-offset#{$i} {
+        margin-left: $i/$lg-column-count *100%;
+      }
+    }
+    .g4-show {
+      display: block;
+    }
+    .g4-hide {
+      display: none;
+    }
+    .g4-right-offset1 {
+      margin-right: 1/$lg-column-count *100%;
+    }
+  }
+}
+
+.flex.grid-boxes {
+  margin-bottom: 30px;
+
+  @media all and (min-width: $mq3) {
+    padding: 0 !important;
+  }
+
+  .g3-flex4 {
+
+    @media all and (min-width: $mq3) {
+      padding: 0 !important;
+    }
+  }
+}
+
+* {
+  // grid needs this for padding ie8+
+  box-sizing: border-box;
+}
+
+body {
+  font-family: helvetica;
+  color: #333;
+}
+
+.grid-block {
+  background: #ddd;
+  text-align: center;
+  margin-bottom: 15px;
+  padding: 15px 0;
+}
+
+.center {
+  text-align: center;
+}

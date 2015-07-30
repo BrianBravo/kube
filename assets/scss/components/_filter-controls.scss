@@ -1,0 +1,43 @@
+.filter-controls {
+  margin-top: 3em;
+  margin-bottom: -2em;
+
+  li {
+    display: inline-block;
+    margin: 0 .5em;
+    text-transform: uppercase;
+    font-weight: 600;
+    @extend %montserrat-font;
+
+    .icon {
+      display: none;
+    }
+
+    &.active {
+      color: $main-color;
+
+      .icon {
+        display: block;
+        height: 1em;
+        width: 1em;
+        margin: .15em auto;
+        fill: $main-color;
+        @include transform(rotate(180deg));
+      }
+    }
+    &:active {
+      color: $main-color;
+    }
+
+    @include medium {
+      margin: 0 1.5em;
+
+      &:hover {
+        color: $main-color;
+      }
+    }
+    @include large {
+      margin: 0 3em;
+    }
+  }
+}

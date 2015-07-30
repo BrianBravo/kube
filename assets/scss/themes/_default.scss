@@ -1,0 +1,11 @@
+section {
+  &.gray {
+    background-color: $off-white-dark;
+  }
+  &.white {
+    background-color: white;
+  }
+  &.gray-dark {
+    background-color: $off-white-darker;
+  }
+}

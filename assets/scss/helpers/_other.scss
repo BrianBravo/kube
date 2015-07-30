@@ -1,0 +1,94 @@
+@mixin centered() {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+
+@mixin two-columns($column-count, $column-gap, $widows, $orphans) {
+  @include column-count($column-count);
+  @include column-gap($column-gap);
+  widows: $widows;
+  orphans: $orphans;
+}
+
+@mixin calc($property, $expression) { 
+  #{$property}: -webkit-calc(#{$expression}); 
+  #{$property}: calc(#{$expression}); 
+} 
+
+@mixin default-transition(){
+  @include transition(all 200ms cubic-bezier(0,0,1,1));
+}
+
+%visible-small-only {
+  display: block;
+
+  @include medium {
+    display: none;
+  }
+}
+%visible-small-medium-only {
+  display: block;
+
+  @include large {
+    display: none;
+  }
+}
+%visible-medium-plus {
+  display: none;
+
+  @include medium {
+    display: block;
+  }
+}
+%visible-large-only {
+  display: none;
+
+  @include large {
+    display: block;
+  }
+}
+
+%with-vertically-centered-content {
+  @include display-flex;
+  @include align-items(center);
+  @include justify-content(center);
+}
+
+.with-centered-content {
+  @include display-flex(inline-flex !important);
+  @include align-items(center);
+  height: 100%;
+
+  &.left-justified {
+  }
+  // @include flex-grow(1);
+}
+.no-padding {
+  padding: 0;
+}
+.with-centered-text {
+  text-align: center;
+}
+// %visible-until-desktop {
+//   display: block;
+
+//   @include desktop {
+//     display: none;
+//   }
+// }
+// %visible-desktop-wide-only {
+//   display: none;
+
+//   @include desktop-wide {
+//     display: block;
+//   }
+// }
+// %visible-until-desktop-wide {
+//   @include desktop-wide {
+//     display: none;
+//   }
+// }

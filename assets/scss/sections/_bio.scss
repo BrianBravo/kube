@@ -1,0 +1,15 @@
+section.bio {
+  h2 {
+    color: $main-color-light;
+    font-size: .8em;
+    font-weight: 600;
+    margin-bottom: .25em;
+  }
+  h1 {
+    margin-bottom: .5em;
+  }
+
+  @include large {
+    height: 30em;
+  }
+}

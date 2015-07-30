@@ -1,0 +1,23 @@
+{% set pageId = 'about' %}
+{% set headerClass = 'dark' %}
+{% set pageClass = 'aux-page' %}
+
+{% extends "_layout" %}
+
+{% block content %} 
+  {{ auxSectionMacros.sections(entry) }}
+  <section class="white">
+    <div class="grid-row grid-row--widest">
+      {% for partner in craft.entries.section('vendors').limit(12) %}
+      <div class="gs--half gl--third partner-box">
+        <figure>
+          <img src="{{ partner.largeImage.first.url }}" alt="">
+        </figure>
+        <div class="copy">
+          <h2 class="center">{{ partner }}</h2>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endblock %}

@@ -1,0 +1,42 @@
+section.heading-n-text {
+  background-size: cover;
+  background-position: center;
+
+  text-align: center;
+  padding: 2em 0;
+
+  .copy-wrap {
+    &--top {
+      margin-top: -20%;
+    }
+    &--bottom {
+      margin-top: 20%;
+    }
+  }
+  @include medium {
+    padding: 4em 0;
+    
+    .copy {
+      width: 38em;
+      margin: 0 auto;
+    }
+  }
+  @include large {
+    padding: 7em 0;
+
+    .copy {
+      max-width: 36em;
+    }
+  }
+
+  &--tall {
+    padding: 6em 0;
+
+    @include medium {
+      padding: 12em 0;
+    }
+    @include large {
+      padding: 21em 0;
+    }
+  }
+}

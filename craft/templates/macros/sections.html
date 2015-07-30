@@ -1,0 +1,406 @@
+{% macro sections(entry) %}
+  {% import _self as sectionMacros %}
+
+  {% for section in entry.sections %}
+    {% set loopIndex = loop.index %}
+
+    {% switch section.type %}
+
+      {% case "hero" %}
+        {{ sectionMacros.hero(section) }}  
+      {% case "featureList" %}
+        {{ sectionMacros.featureList(section) }} 
+      {% case "experienceA" %}
+        {{ sectionMacros.experienceA(section) }}
+      {% case "experienceB" %}
+        {{ sectionMacros.experienceB(section) }}
+      {% case "halfTextHalfImage" %}
+        {{ sectionMacros.halfTextHalfImage(section) }}
+      {% case "vendorImageList" %}
+        {{ sectionMacros.vendorImageList(section) }}
+      {% case "halfImageHalfText" %}
+        {{ sectionMacros.halfImageHalfText(section) }}
+      {% case "partsGrid" %}
+        {{ sectionMacros.partsGrid(section) }}
+      {% case "wideImage" %}
+        {{ sectionMacros.wideImage(section) }}
+      {% case "text" %}
+        {{ sectionMacros.text(section) }}
+      {% case 'soundWidget' %}
+        {{ sectionMacros.soundWidget(section) }}
+      {% case 'accessoriesGrid' %}
+        {{ sectionMacros.accessoriesGrid(section) }}
+      {% default %}
+        <p>No section match found</p>
+    {% endswitch %}
+  {% endfor %}
+{% endmacro %}
+
+{% macro hero(section) %}
+  <section class="white hero {{ section.makeShort ? 'hero--short' : '' }}" style="background-image:url({{section.backgroundImage.first.url }});">
+    <div class="overlay"></div>
+    <div class="copy-wrap grid-row grid-row--widest grid-row--vcentered-content">
+      <div class="gs--full gxl--half {{ section.leftAlignText ? '' : 'gxl--half--offset' }}">
+        <div class="copy">
+          <h1 class="xxx-large">{{ section.heading | nl2br }}</h1>
+          {% if section.buttonText|length > 0 %}
+          <div class="btn-wrapper">
+            <a class="btn white" href="{{ section.buttonUrl }}">
+              <div class="border-helper"></div>
+              <div class="background-helper"></div>
+              <div class="button__text">{{ section.buttonText }}</div>
+            </a>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro featureList(section) %}
+  {% set list = section.list.first %}
+  <section class="gray feature-list">
+    <div class="grid-row grid-row--fully-padded grid-row--vcentered-content">
+      <div class="gs--full gm--half gl--thirdx2 js-featured-image image-wrap">
+        {% for feature in list.list %}
+          <img class="feature-{{feature.id}} {{ loop.first ? 'active' : '' }}" src="{{ feature.image.first.url }}" alt="{{ feature.image.first }}">
+        {% endfor %}
+      </div> 
+      <div class="gs--full gm--half gl--third features">
+        {% for feature in list.list %}
+        <div class="feature {{ loop.first ? 'feature--active' : '' }}" data-img-sel=".feature-{{ feature.id }}">
+          <h2>{{ feature.heading }}</h2>
+          <p>{{ feature.description }}</p>
+        </div>
+        {% endfor %}
+      </div> 
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro experienceA(section) %}
+  <section class="white experience">
+    <div class="grid-row grid-row--widest ">
+      <div class="gs--full gl--thirdx2">
+        <div class="grid-row grid-row--padded grid-row--centered-content wide">
+          <div class="copy">
+            <h2 class="large">{{ section.heading }}</h2>
+            <p>{{ section.details }}</p>
+          </div>
+        </div>
+      </div>
+      <div class="gs--half gl--thirdx2">
+        <div class="full-image wide" style="background-image:url({{ section.wideImage.first.url }});"></div>
+      </div>
+      <div class="gs--half gl--third">
+        <div class="full-image tall" style="background-image:url({{ section.tallImage.first.url }});"></div>
+      </div>
+      <div class="gs--full gm--half">
+        <div class="full-image half" style="background-image:url({{ section.halfWidthImage.first.url }});"></div>
+      </div>
+      <div class="gs--full gm--half">
+        <div class="grid-row grid-row--padded grid-row--centered-content half">
+          <div class="copy">
+            <h2 class="large">{{ section.secondHeading }}</h2>
+            <div class="button-wrapper">
+              <a href="{{section.buttonUrl}}" class="btn">
+                <div class="border-helper"></div>
+                <div class="background-helper"></div>
+                <div class="button__text">{{ section.buttonText }}</div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro experienceB(section) %}
+  <section class="experience alt">
+    <div class="grid-row grid-row--widest grid-row--vcentered-content">
+      <div class="gs--full gl--thirdx2">
+        <img src="{{ section.imageTopTwoThirds.first.url }}" alt="{{ section.imageTopTwoThirds.first }}">
+      </div>
+      <div class="gs--half gl--third">
+        <img src="{{ section.imageTopOneThird.first.url }}" alt="{{ section.imageTopOneThird.first }}">
+      </div>
+      <div class="gs--half gl--third">
+        <img src="{{ section.imageMiddleOneThird.first.url }}" alt="{{ section.imageMiddleOneThird.first }}">
+      </div>
+      <div class="gs--full gl--ninthx4 gl--ninth--offset">
+        <div class="grid-row grid-row--fully-padded">
+          <h1 class="large">{{ section.heading }}</h1>
+          <p>{{ section.experienceDetails }}</p>
+        </div>
+      </div>
+      <div class="gs--half gm--thirdx2 bottom-left-image-wrap">
+        <img src="/images/pages/features/wave-small.jpg" alt="" class="small">
+        <img src="{{ section.imageBottomTwoThirds.first.url }}" alt="{{ section.imageBottomTwoThirds.first }}" class="medium-plus">
+      </div>
+      <div class="gs--half gm--third">
+        <img src="{{ section.imageBottomOneThird.first.url }}" alt="{{ section.imageBottomOneThird.first }}">
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro vendorImagelist(section) %}
+  <section class="white vendor-links">
+    <div class="grid-row grid-row--fully-padded grid-row--hcentered-content">
+      {% for vendor in section.vendors %}
+        <div class="image-wrap">
+          <a href="{{ vendor.url }}">
+            <img src="{{ vendor.smallImage.first.url }}" alt="{{ vendor.smallImage.first }}">
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro halfImageHalfText(section) %}
+  <section class="white half-image-half-text">
+    <div class="grid-row grid-row--centered-content">
+      <div class="image-wrap gs--full gm--half">
+        <img src="{{ section.image.first.url }}" alt="">
+      </div>
+      <div class="copy-wrap gs--full gm--half">
+        <div class="grid-row grid-row--fully-padded">
+          <div class="copy copy--max-width">
+            <h1 class="large">{{ section.heading }}</h1>
+            <p>{{ section.details }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro halfTextHalfImage(section) %}
+  {% if section.imageStyle == 'normal' %}
+    <p>This option is not available yet...</p>
+  {% elseif section.imageStyle == 'wide' %}
+    <!-- single-feature call-to-action -->
+    <!-- half-text-half-image-wide -->
+    <section class="gray half-text-half-image half-text-half-image--wide-image">
+      <div class="grid-row grid-row--centered-content">
+        <div class="gs--full gm--half">
+          <div class="grid-row grid-row--padded grid-row--widest grid-row--centered-content copy-wrap">
+            <div class="copy">
+              <h1 class="large">{{ section.heading }}s</h1>
+              <p>{{ section.details }}</p>
+              <div class="button-wrapper">
+                <a href="{{ section.buttonUrl }}">
+                  <button class="button jelly button--line button--effect-1">
+                    <span class="morph-shape" data-morph-active="M286,113c0,0-68.8,9-136,9c-78.2,0-137-9-137-9S3,97.198,3,62.5C3,33.999,13,12,13,12S72,2,150,2c85,0,136,10,136,10s11,17.598,11,52C297,96.398,286,113,286,113z">
+                      <svg width="100%" height="100%" viewBox="0 0 300 125" preserveAspectRatio="none">
+                        <path d="M286.5,113c0,0-104,0-136.5,0c-35.75,0-136.5,0-136.5,0s0-39.417,0-52.5c0-12.167,0-48.5,0-48.5s101.833,0,136.5,0c33.583,0,136.5,0,136.5,0s0,35.917,0,48.5C286.5,73.167,286.5,113,286.5,113z"/>
+                      </svg>
+                    </span>
+                    <span class="button__text">{{ section.buttonText }}</span>
+                  </button>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="gs--full gm--half image-wrap">
+          <img src="{{ section.image.first.url }}" alt="{{ section.image.first }}">
+        </div>
+      </div>
+    </section>
+  {% elseif section.imageStyle == 'full' %}
+    <section class="white half-n-half-w-image">
+      <div class="grid-row grid-row--vcentered-content grid-row--padded copy-grid">
+        <div class="gs--full gm--half">
+          <div class="copy">
+            <h1 class="large">Battery</h1>
+            <p>Body copy text sizing. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+          </div>
+        </div> 
+      </div>
+      <div class="grid-row grid-row--widest image-grid">
+        <div class="image-holder gs--full gm--half gm--half--offset" style="background-image: url(/images/pages/features/volume-control.jpg)">
+        </div>
+      </div>
+    </section>
+  {% endif %}
+{% endmacro %}
+
+{% macro partsGrid(section) %}
+  <section class="gray-dark parts-grid">
+    <div class="grid-row grid-row--fully-padded grid-row--centered-content">
+      <div class="gs--full row">
+        <div class="copy copy--max-width">
+          <h1 class="large">{{ section.heading }}</h1>
+          <p>{{ section.details }}</p>
+        </div>
+        <img src="{{ section.topImage1.first.url }}" alt="{{ section.topImage1.first }}">
+        <img src="{{ section.topImage2.first.url }}" alt="{{ section.topImage2.first }}">
+      </div>
+      <div class="gs--full row">
+        <div class="grid-row grid-row--widest grid-row--hcentered-content">
+          {% for part in section.parts %}
+            <figure class="gs--full gm--half gl--third">
+              <div class="copy">
+                <h4>{{ part.title }}</h4>
+                <svg class="icon icon-triangle-down" role="link" viewBox="0 0 30 30">
+                  <use xlink:href="#icon-triangle-down"></use>
+                </svg> 
+                <p>{{ part.details }}</p>
+              </div>
+              <img src="{{ part.partImage.first.url }}" alt="{{ part.partImage.first }}">
+            </figure>
+          {% endfor %}
+          </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro wideImage(section) %}
+  <section class="white">
+    <img src="{{ section.image.first.url }}" alt="{{ section.image.first }}">
+  </section>
+{% endmacro %}
+
+{% macro text(section) %}
+  <section class="white heading-n-text heading-n-text--{{ section.sectionHeight }}" style="background-image:url({{ section.backgroundImage.first ? section.backgroundImage.first.url : '' }})">
+    <div class="grid-row grid-row--padded grid-row--centered-content">
+      <div class="gs--full  gm--thirdx2 copy-wrap copy-wrap--{{ section.textPosition }}">
+        <div class="copy with-centered-text">
+          <h1 class="large">{{ section.heading }}</h1>
+          <p>{{ section.details }}</p>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro soundWidget(section) %}
+  <section class="white">
+    <img src="/images/pages/features/graph.jpg" alt="">
+  </section>
+  <section class="white kube-controls">
+    <div class="grid-row grid-row--fully-padded">
+      <div class="gs--full">
+        <figure>
+          <img src="/images/pages/features/kube-icon.png" alt="">
+          <h4>KUBE</h4>
+        </figure>
+        <figure>
+          <img src="/images/pages/features/kube-icon.png" alt="">
+          <h4>KUBE</h4>
+        </figure>
+        <figure>
+          <img src="/images/pages/features/kube-icon.png" alt="">
+          <h4>KUBE</h4>
+        </figure>
+        <figure>
+          <img src="/images/pages/features/kube-icon.png" alt="">
+          <h4>KUBE</h4>
+        </figure>
+        <figure>
+          <img src="/images/pages/features/kube-icon.png" alt="">
+          <h4>KUBE</h4>
+        </figure>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro accessoriesGrid(section) %}
+  {% import 'macros/buttons.html' as buttonMacros %}
+
+  <section class="white grid accessories">
+    <div class="grid-row grid-row--widest">
+      <div class="gs--full gm--half gl--thirdx2 cta-wrapper accessory accessory--no-border">
+        <div class="copy-wrap grid-row grid-row--centered-content">
+          <div class="copy">
+            <h1 class="large">{{ section.heading }}</h1>
+            {{ buttonMacros.bouncyButton('Buy') }}
+          </div>
+        </div>
+      </div>
+      <div class="gs--full gm--half gl--third accessory accessory--no-border">
+        <div class="copy-wrap grid-row grid-row--centered-content">
+          <figure>
+            <img src="/images/pages/features/coming-soon-1.jpg" alt="">
+          </figure>
+        </div>
+      </div>
+
+      <div class="gs--full gm--half gl--third accessory accessory--no-border">
+        <div class="copy-wrap grid-row grid-row--centered-content">
+          <figure>
+            <img src="/images/pages/features/coming-soon-2.jpg" alt="">
+          </figure>
+        </div>
+      </div>
+      <div class="gs--full gm--half gl--third accessory accessory--animated">
+        <div class="copy-wrap grid-row grid-row--centered-content">
+          <div class="image-holder" style="background-image:url(/images/pages/features/accessory-1.jpg)"></div>
+          <div class="copy">
+            <h2 class="bold">Accessory</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="gs--full gm--half gl--third accessory accessory--animated">
+        <div class="copy-wrap grid-row grid-row--centered-content">
+          <div class="image-holder" style="background-image:url(/images/pages/features/accessory-1.jpg)"></div>
+          <div class="copy">
+            <h2 class="bold">Accessory</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="gs--full gm--half gl--third accessory accessory--animated">
+        <div class="copy-wrap grid-row grid-row--centered-content">
+          <div class="image-holder" style="background-image:url(/images/pages/features/accessory-1.jpg)"></div>
+          <div class="copy">
+            <h2 class="bold">Accessory</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="gs--full gm--half gl--third accessory accessory--animated">
+        <div class="copy-wrap grid-row grid-row--centered-content">
+          <div class="image-holder" style="background-image:url(/images/pages/features/accessory-1.jpg)"></div>
+          <div class="copy">
+            <h2 class="bold">Accessory</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+      <div class="gs--full gm--half gl--third accessory accessory--animated">
+        <div class="copy-wrap grid-row grid-row--centered-content">
+          <div class="image-holder" style="background-image:url(/images/pages/features/accessory-1.jpg)"></div>
+          <div class="copy">
+            <h2 class="bold">Accessory</h2>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endmacro %}
+
+{% macro halfHalfWithImage(section) %}
+  <section class="white half-n-half-w-image">
+    <div class="grid-row grid-row--vcentered-content grid-row--padded copy-grid">
+      <div class="gs--full gm--half">
+        <div class="copy">
+          <h1 class="large">Battery</h1>
+          <p>Body copy text sizing. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip.</p>
+        </div>
+      </div> 
+    </div>
+    <div class="grid-row grid-row--widest image-grid">
+      <div class="image-holder gs--full gm--half gm--half--offset" style="background-image: url(/images/pages/features/volume-control.jpg)">
+      </div>
+    </div>
+  </section>
+{% endmacro %}
